@@ -6,11 +6,11 @@ public class PracticeLinkedList{
 		PracticeLinkedList lList = new PracticeLinkedList();
 
 		// add elements to LinkedList
-        lList.add("1");
-        lList.add("2");
-        lList.add("3");
-        lList.add("4");
-        lList.add("5");
+        lList.add(0);
+        lList.add(1);
+        lList.add(2);
+        lList.add(3);
+        lList.add(4);
 
 		/*
          * Please note that primitive values can not be added into LinkedList
@@ -18,11 +18,11 @@ public class PracticeLinkedList{
          * class.
          */
  
-        System.out.println("lList - print linkedlist: " + lList);
-        System.out.println("lList.size() - print linkedlist size: " + lList.size);
-        System.out.println("lList.get(3) - get 3rd element: " + lList.get(3));
-        System.out.println("lList.remove(2) - remove 2nd element: " + lList.remove(2));
-        System.out.println("lList.get(3) - get 3rd element: " + lList.get(3));
+        System.out.println("lList - print linkedlist: " + lList.toString());
+        System.out.println("lList.size() - print linkedlist size (Should be size 5) : " + lList.size);
+        System.out.println("lList.get(3) - get 3rd element (Should be 3): " + lList.get(3));
+        System.out.println("lList.remove(2) - remove 2nd element : " + lList.remove(2));
+        System.out.println("lList.get(3) - get 3rd element(Should be 3): " + lList.get(3));
         System.out.println("lList.size() - print linkedlist size: " + lList.size);
         System.out.println("lList - print linkedlist: " + lList);
         lList.printElements();
@@ -52,21 +52,20 @@ public class PracticeLinkedList{
 
 	public void add(Object value){
 		tail.next = new Node(value, null);
-		tail.next.value = value;
 		tail = tail.next;
 		size++; 
 	}
 
 	public boolean remove(int index){
 		Node temp = head;
-		if(temp==tail){
+		if(temp==tail || temp.next == null){
 			return false;
 		}
 
 		if(index+1<=size){
-			for( int i = 0; i <index-1; i++){
+			for( int i = 0; i <index; i++){ // Goes through list; Stops at index
 				temp = temp.next;
-				if(temp==tail){
+				if(temp.next == null){
 					return false;
 				}		
 			}
